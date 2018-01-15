@@ -127,7 +127,7 @@ def get_babson_classes():
                         babson_class['professor_emails'].append(babson_emails[str(professor_id)]['email'])
                     except:
                         babson_class['auto_generated_email'] = True
-                        babson_class['professor_emails'].append( re.sub(',', '', professor[1][:1] + professor[0] + '@babson.edu'))
+                        babson_class['professor_emails'].append( re.sub(', ', '', professor[1][:1] + professor[0] + '@babson.edu'))
         
         # If there is only one professork, create array for them and then run function
         else:
@@ -146,7 +146,7 @@ def get_babson_classes():
                     babson_class['professor_emails'].append(babson_emails[str(professor_id)]['email'])
                 except:
                     babson_class['auto_generated_email'] = True
-                    babson_class['professor_emails'].append( re.sub(',', '', professor[1][:1] + professor[0] + '@babson.edu'))
+                    babson_class['professor_emails'].append( re.sub(', ', '', professor[1][:1] + professor[0] + '@babson.edu'))
 
 
     return all_babson_classes
