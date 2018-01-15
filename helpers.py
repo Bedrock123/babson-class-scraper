@@ -121,13 +121,15 @@ def get_babson_classes():
                 if len(professor) > 1:
                     professor_id = professor[1] + ";" + professor[0] + ';none;employee'
                     professor_id = re.sub(',', '', professor_id)
-                    print professor_id
+                    # print professor_id
                     try:
                         babson_class['auto_generated_email'] = False
                         babson_class['professor_emails'].append(babson_emails[str(professor_id)]['email'])
                     except:
                         babson_class['auto_generated_email'] = True
-                        babson_class['professor_emails'].append( re.sub(', ', '', professor[1][:1] + professor[0] + '@babson.edu'))
+                        new_email = re.sub(',', '', professor[1][:1] + professor[0] + '@babson.edu')
+                        new_email = new_email.split(" ")
+                        babson_class['professor_emails'].append(new_email[0])
         
         # If there is only one professork, create array for them and then run function
         else:
@@ -140,13 +142,15 @@ def get_babson_classes():
             if len(professor) > 1:
                 professor_id = professor[1] + ";" + professor[0] + ';none;employee'
                 professor_id = re.sub(',', '', professor_id)
-                print professor_id
+                # print professor_id
                 try:
                     babson_class['auto_generated_email'] = False
                     babson_class['professor_emails'].append(babson_emails[str(professor_id)]['email'])
                 except:
                     babson_class['auto_generated_email'] = True
-                    babson_class['professor_emails'].append( re.sub(', ', '', professor[1][:1] + professor[0] + '@babson.edu'))
+                    new_email = re.sub(',', '', professor[1][:1] + professor[0] + '@babson.edu')
+                    new_email = new_email.split(" ")
+                    babson_class['professor_emails'].append(new_email[0])
 
 
     return all_babson_classes
@@ -160,10 +164,12 @@ def check_babson_class_emails(classes):
         if len(babson_class['professor_emails']) > 0:
             if  babson_class['auto_generated_email']:
                 for email in babson_class['professor_emails']:
-                    print email
+                    # print email
+                    pass
             email_count += 1
         else:
-            print  babson_class['professor(s)']
+            # print  babson_class['professor(s)']
+            pass
     print '---------------------------'
     print 'Number of Classes: ' + str(len(classes))
     print 'Number of Found Emails: ' + str(email_count)
